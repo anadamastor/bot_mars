@@ -1,15 +1,15 @@
-import { NUMBER_OF_ROWS } from "../../constants";
-import { GridProps } from "../../types";
+import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../../constants/constants";
+import { GridProps } from "../../types/types";
 import { createArray } from "../../utils/create-array";
 import Cell from "../Cell/Cell";
 
-const Grid = ({ numberOfRows, numberOfColumns, robotPosition }: GridProps) => {
-  const rowsArray = createArray(numberOfRows);
-  const columnsArray = createArray(numberOfColumns);
+const Grid = ({ robotPosition }: GridProps) => {
+  const rowsArray = createArray(NUMBER_OF_ROWS);
+  const columnsArray = createArray(NUMBER_OF_COLUMNS);
 
   return (
     <div
-      className={`grid grid-cols-[repeat(5,minmax(1rem,20%))] grid-rows-[repeat(5,minmax(50px,auto))] gap-2 mx-0 my-9`}
+      className={`grid mx-auto my-9 px-8 gap-2 justify-center grid-cols-[repeat(${NUMBER_OF_COLUMNS},minmax(1rem,20%))] grid-rows-[repeat(${NUMBER_OF_ROWS},minmax(50px,auto))]  `}
     >
       {rowsArray.map((rowIndex) => {
         return columnsArray.map((columnIndex) => {

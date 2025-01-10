@@ -1,4 +1,4 @@
-import { CellProps } from "../types";
+import { CellProps } from "../types/types";
 
 export const isRobotInCell = ({
   robotPosition,

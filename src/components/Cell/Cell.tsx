@@ -1,5 +1,5 @@
-import { TRANSITION_SECONDS } from "../../constants";
-import { CellProps } from "../../types";
+import { ROBOT_ICON, TRANSITION_SECONDS } from "../../constants/constants";
+import { CellProps } from "../../types/types";
 import { getCoordinates } from "../../utils/get-coordinates";
 import { isRobotInCell } from "../../utils/is-robot-in-cell";
 
@@ -7,7 +7,11 @@ const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
   const cellCoordinatesText = getCoordinates(cellCoordinates);
 
   return (
-    <div className={"border-2 h-24 flex justify-center items-center text-4xl"}>
+    <div
+      className={
+        "border border-stone-800 h-20 flex justify-center items-center text-4xl font-thin"
+      }
+    >
       {isRobotInCell({ robotPosition, cellCoordinates }) ? (
         <span
           style={{
@@ -15,10 +19,10 @@ const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
             transition: `${TRANSITION_SECONDS}s`,
           }}
         >
-          🤖
+          {ROBOT_ICON}
         </span>
       ) : (
-        <p className="text-gray-200 text-xl">{cellCoordinatesText}</p>
+        <p className="text-gray-300 text-2xl">{cellCoordinatesText}</p>
       )}
     </div>
   );

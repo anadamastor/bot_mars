@@ -1,24 +1,15 @@
 import { useState } from "react";
-
-import CommandLine from "./components/CommandLine/CommandLine";
-import {
-  INITIAL_POSITION,
-  NUMBER_OF_COLUMNS,
-  NUMBER_OF_ROWS,
-  POSSIBLE_INSTRUCTIONS,
-  TRANSITION_SECONDS,
-} from "./constants";
-import { Position } from "./types";
+import { CommandLine } from "./components/CommandLine/CommandLine";
+import { INITIAL_POSITION, TRANSITION_SECONDS } from "./constants/constants";
+import { Position } from "./types/types";
 import { animationDuration } from "./utils/animation-duration";
 import { moveForward } from "./utils/move-forward";
-import { rotateRight, rotatetLeft } from "./utils/rotate";
+import { rotateRobot } from "./utils/rotate";
 import Grid from "./components/Grid/Grid";
-
-const {
-  moveForwardInstruction,
-  rotateLeftInstruction,
-  rotateRightInstruction,
-} = POSSIBLE_INSTRUCTIONS;
+import {
+  isMoveForwardInstruction,
+  isRotateInstruction,
+} from "./types/type-guards";
 
 function App() {
   const [robotPosition, setRobotPosition] =
@@ -31,21 +22,17 @@ function App() {
     setIsAnimating(true);
     for (const instruction of instructions) {
       await animationDuration(TRANSITION_SECONDS).then(() => {
-        if (instruction === moveForwardInstruction) {
+        if (isMoveForwardInstruction(instruction)) {
           setRobotPosition((prevPosition) => moveForward(prevPosition));
         }
 
-        if (instruction === rotateLeftInstruction) {
+        if (isRotateInstruction(instruction)) {
           setRobotPosition((prevPosition) => ({
             ...prevPosition,
-            robotAngle: rotatetLeft(prevPosition.robotAngle),
-          }));
-        }
-
-        if (instruction === rotateRightInstruction) {
-          setRobotPosition((prevPosition) => ({
-            ...prevPosition,
-            robotAngle: rotateRight(prevPosition.robotAngle),
+            robotAngle: rotateRobot({
+              angle: prevPosition.robotAngle,
+              directionOfRotation: instruction,
+            }),
           }));
         }
       });
@@ -54,13 +41,11 @@ function App() {
   };
 
   return (
-    <div className={"max-w-3xl mx-auto"}>
-      <h1 className="text-center my-9 ">A stroll on Mars</h1>
-      <Grid
-        numberOfRows={NUMBER_OF_ROWS}
-        numberOfColumns={NUMBER_OF_COLUMNS}
-        robotPosition={robotPosition}
-      />
+    <div className={"max-w-xl mx-auto font-roboto px-8"}>
+      <h1 className="text-center mt-9 text-4xl font-bold ">
+        A little stroll on Mars
+      </h1>
+      <Grid robotPosition={robotPosition} />
       <CommandLine
         instructions={instructions}
         setInstructions={setInstructions}

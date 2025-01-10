@@ -1,6 +1,4 @@
 export type GridProps = {
-  numberOfRows: number;
-  numberOfColumns: number;
   robotPosition: Position;
 };
 

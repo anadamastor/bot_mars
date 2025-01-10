@@ -1,5 +1,5 @@
-import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../constants";
-import { Position } from "../types";
+import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../constants/constants";
+import { Position } from "../types/types";
 
 export const moveForward = (position: Position): Position => {
   const { robotX, robotY, robotAngle } = position;
