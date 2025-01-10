@@ -9,7 +9,7 @@ const Grid = ({ robotPosition }: GridProps) => {
 
   return (
     <div
-      className={`grid mx-auto my-9 px-8 gap-2 justify-center grid-cols-[repeat(${NUMBER_OF_COLUMNS},minmax(1rem,20%))] grid-rows-[repeat(${NUMBER_OF_ROWS},minmax(50px,auto))]  `}
+      className={`grid mx-auto my-9 px-8 gap-2 grid-cols-[repeat(${NUMBER_OF_COLUMNS},minmax(1rem,20%))] grid-rows-[repeat(${NUMBER_OF_ROWS},minmax(50px,auto))]  `}
     >
       {rowsArray.map((rowIndex) => {
         return columnsArray.map((columnIndex) => {

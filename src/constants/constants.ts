@@ -6,9 +6,9 @@ export const INITIAL_POSITION: Position = {
   robotAngle: 0,
 };
 
-export const NUMBER_OF_ROWS = 4;
+export const NUMBER_OF_ROWS = 5;
 export const NUMBER_OF_COLUMNS = 5;
-export const TRANSITION_SECONDS = 1;
+export const TRANSITION_SECONDS = 0.5;
 export const ROBOT_ICON = "🤖";
 
 export type PossibleInstructions = {

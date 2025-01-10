@@ -9,7 +9,7 @@ const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
   return (
     <div
       className={
-        "border border-stone-800 h-20 flex justify-center items-center text-4xl font-thin"
+        "border border-stone-800 h-20 flex justify-center items-center text-4xl font-roboto"
       }
     >
       {isRobotInCell({ robotPosition, cellCoordinates }) ? (
@@ -22,7 +22,9 @@ const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
           {ROBOT_ICON}
         </span>
       ) : (
-        <p className="text-gray-300 text-2xl">{cellCoordinatesText}</p>
+        <p className="text-gray-300 text-2xl font-extralight">
+          {cellCoordinatesText}
+        </p>
       )}
     </div>
   );
