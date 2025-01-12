@@ -11,12 +11,12 @@ export const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
   return (
     <div className="border border-stone-800 flex justify-center items-center text-4xl">
       {isInCell ? (
-        <span
+        <div
           style={robotRotation}
-          aria-label={`Robot is here! Cell: ${cellCoordinatesText}`}
+          aria-label={`Robot is here! Cell: ${cellCoordinatesText} with ${robotPosition.robotAngle} deg rotation`}
         >
           {robotIcon}
-        </span>
+        </div>
       ) : (
         <p
           aria-label={`No Robot at Cell: ${cellCoordinatesText}`}

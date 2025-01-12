@@ -24,7 +24,6 @@ describe("InstructionsInput", () => {
   });
 
   it("should allow permitted instructions - L, F, R", async () => {
-    const setInstructionsMock = vi.fn();
     render(
       <InstructionsInput
         instructions={""}
@@ -42,7 +41,8 @@ describe("InstructionsInput", () => {
     expect(setInstructionsMock).toHaveBeenCalledWith("F");
   });
   it("should not allow not permitted instructions", async () => {
-    const setInstructionsMock = vi.fn();
+    const consoleLogSpy = vi.spyOn(console, "log");
+
     render(
       <InstructionsInput
         instructions={""}
@@ -52,8 +52,10 @@ describe("InstructionsInput", () => {
     );
     await userEvent.type(instructionsTextBox(), "T");
     expect(setInstructionsMock).not.toHaveBeenCalledOnce();
+    expect(consoleLogSpy).toHaveBeenCalledWith("Character not allowed");
 
     await userEvent.type(instructionsTextBox(), "2");
     expect(setInstructionsMock).not.toHaveBeenCalledOnce();
+    expect(consoleLogSpy).toHaveBeenCalledWith("Character not allowed");
   });
 });
