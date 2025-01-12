@@ -41,7 +41,7 @@ function App() {
   };
 
   return (
-    <div className={"max-w-xl mx-auto font-roboto px-8"}>
+    <div className={"flex flex-col font-roboto px-8"}>
       <h1 className="text-center mt-9 text-4xl font-bold ">
         A little stroll on Mars
       </h1>

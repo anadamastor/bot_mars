@@ -13,7 +13,7 @@ export const InstructionsInput = ({
     <input
       type="area"
       className={
-        "px-3 w-3/5 border border-slate-800 border-opacity-70 font-thin"
+        "min-w-96 px-3 border border-slate-800 border-opacity-80 font-thin"
       }
       value={instructions}
       onChange={(e) => {

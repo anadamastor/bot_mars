@@ -1,13 +1,15 @@
-import { PossibleInstructions } from "../constants/constants";
+import { AvailableInstructions } from "../constants/constants";
 
 export const isRotateInstruction = (
   instruction: string
-): instruction is PossibleInstructions["rotateInstruction"] => {
-  return instruction === "R" || instruction === "L";
+): instruction is
+  | AvailableInstructions["rotateLeft"]
+  | AvailableInstructions["rotateRight"] => {
+  return instruction === "L" || instruction === "R";
 };
 
 export const isMoveForwardInstruction = (
   instruction: string
-): instruction is PossibleInstructions["moveForwardInstruction"] => {
+): instruction is AvailableInstructions["moveForward"] => {
   return instruction === "F";
 };

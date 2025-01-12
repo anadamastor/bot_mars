@@ -1,7 +1,7 @@
 import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../../constants/constants";
 import { GridProps } from "../../types/types";
 import { createArray } from "../../utils/create-array";
-import Cell from "../Cell/Cell";
+import { Cell } from "../Cell/Cell";
 
 const Grid = ({ robotPosition }: GridProps) => {
   const rowsArray = createArray(NUMBER_OF_ROWS);
@@ -9,20 +9,25 @@ const Grid = ({ robotPosition }: GridProps) => {
 
   return (
     <div
-      className={`grid mx-auto my-9 px-8 gap-2 grid-cols-[repeat(${NUMBER_OF_COLUMNS},minmax(1rem,20%))] grid-rows-[repeat(${NUMBER_OF_ROWS},minmax(50px,auto))]  `}
+      className={`grid justify-center my-9 gap-2`}
+      style={{
+        gridTemplateColumns: `repeat(${NUMBER_OF_COLUMNS}, minmax(5rem,auto))`,
+        gridTemplateRows: `repeat(${NUMBER_OF_ROWS}, minmax(5rem,auto)`,
+      }}
     >
       {rowsArray.map((rowIndex) => {
         return columnsArray.map((columnIndex) => {
-          const cellY = NUMBER_OF_ROWS - 1 - rowIndex;
-          const cellX = columnIndex;
+          // move this to a uilitiy
+          const cellCoordinates = {
+            cellY: NUMBER_OF_ROWS - 1 - rowIndex,
+            cellX: columnIndex,
+          };
+
           return (
             <Cell
-              key={`${cellX}-${cellY}`}
+              key={`${cellCoordinates.cellX}-${cellCoordinates.cellY}`}
               robotPosition={robotPosition}
-              cellCoordinates={{
-                cellX,
-                cellY,
-              }}
+              cellCoordinates={cellCoordinates}
             />
           );
         });
