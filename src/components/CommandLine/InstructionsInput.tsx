@@ -1,7 +1,4 @@
-import {
-  isMoveForwardInstruction,
-  isRotateInstruction,
-} from "../../types/type-guards";
+import { isValidInstructions } from "../../utils/is-valid-instructiions";
 
 type InstructionsInputProps = {
   instructions: string;
@@ -16,16 +13,7 @@ export const InstructionsInput = ({
 }: InstructionsInputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const allInstructions = e.currentTarget.value.toUpperCase();
-    if (allInstructions === "") {
-      setInstructions("");
-      return;
-    }
-
-    const lastInstruction = allInstructions.slice(-1);
-    if (
-      isRotateInstruction(lastInstruction) ||
-      isMoveForwardInstruction(lastInstruction)
-    ) {
+    if (isValidInstructions(allInstructions)) {
       setInstructions(allInstructions);
     } else {
       console.log("Character not allowed");

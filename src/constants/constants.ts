@@ -2,7 +2,7 @@ import { Position } from "../types/types";
 
 export const NUMBER_OF_ROWS = 5;
 export const NUMBER_OF_COLUMNS = 5;
-export const TRANSITION_SECONDS = 0.5;
+export const TRANSITION_SECONDS = 0.3;
 export const ROBOT_ICON = "🤖";
 export const INITIAL_POSITION: Position = {
   robotX: 0,

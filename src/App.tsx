@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CommandLine } from "./components/CommandLine/CommandLine";
 import { INITIAL_POSITION, TRANSITION_SECONDS } from "./constants/constants";
-import { Position } from "./types/types";
+import type { Position } from "./types/types";
 import { animationDuration } from "./utils/animation-duration";
 import { moveForward } from "./utils/move-forward";
 import { rotate } from "./utils/rotate";
