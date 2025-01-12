@@ -11,8 +11,9 @@ Robot on Mars!
 - “Move” button to start the movement and “Reset” button to place the Robot in its initial position.
 - Movement is animated with 1s duration. Can be changed from /constants.
 - Boundaries are checked: the Robot will not move if that instruction is beyond the grid.
+<img src="https://github.com/user-attachments/assets/e5a80347-8046-4ae0-8a52-ac6ac529917a" alt="secondimg" width="400"/>
 
-Tests cover:
+Tests covers:
 - Instruction input validation.
 - Robot movement in grid.
 - Boundaries.
