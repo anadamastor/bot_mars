@@ -1,4 +1,18 @@
-import { CellCoordinates } from "../types/types";
+type GetCoordinatesProps = {
+  numberOfRows: number;
+  rowIndex: number;
+  columnIndex: number;
+};
 
-export const getCoordinates = (cellCoordinates: CellCoordinates): string =>
-  `${cellCoordinates.cellX}-${cellCoordinates.cellY}`;
+type GetCoordinates = {
+  cellY: number;
+  cellX: number;
+};
+
+export const getCoordinates = ({
+  numberOfRows,
+  rowIndex,
+  columnIndex,
+}: GetCoordinatesProps): GetCoordinates => {
+  return { cellY: numberOfRows - 1 - rowIndex, cellX: columnIndex };
+};

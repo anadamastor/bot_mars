@@ -1,27 +1,32 @@
 import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../../constants/constants";
-import { GridProps } from "../../types/types";
+import type { Position } from "../../types/types";
 import { createArray } from "../../utils/create-array";
+import { getCoordinates } from "../../utils/get-coordinates";
 import { Cell } from "../Cell/Cell";
 
+export type GridProps = {
+  robotPosition: Position;
+};
+
 const Grid = ({ robotPosition }: GridProps) => {
-  const rowsArray = createArray(NUMBER_OF_ROWS);
-  const columnsArray = createArray(NUMBER_OF_COLUMNS);
+  const rowIndices = createArray(NUMBER_OF_ROWS);
+  const columnIndices = createArray(NUMBER_OF_COLUMNS);
 
   return (
     <div
       className={`grid justify-center my-9 gap-2`}
       style={{
-        gridTemplateColumns: `repeat(${NUMBER_OF_COLUMNS}, minmax(5rem,auto))`,
-        gridTemplateRows: `repeat(${NUMBER_OF_ROWS}, minmax(5rem,auto)`,
+        gridTemplateColumns: `repeat(${NUMBER_OF_COLUMNS}, min(5rem)`,
+        gridTemplateRows: `repeat(${NUMBER_OF_ROWS}, min(5rem)`,
       }}
     >
-      {rowsArray.map((rowIndex) => {
-        return columnsArray.map((columnIndex) => {
-          // move this to a uilitiy
-          const cellCoordinates = {
-            cellY: NUMBER_OF_ROWS - 1 - rowIndex,
-            cellX: columnIndex,
-          };
+      {rowIndices.map((rowIndex) => {
+        return columnIndices.map((columnIndex) => {
+          const cellCoordinates = getCoordinates({
+            numberOfRows: NUMBER_OF_ROWS,
+            rowIndex,
+            columnIndex,
+          });
 
           return (
             <Cell

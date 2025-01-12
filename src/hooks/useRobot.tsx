@@ -1,5 +1,5 @@
 import { ROBOT_ICON, TRANSITION_SECONDS } from "../constants/constants";
-import { CellProps } from "../types/types";
+import type { CellProps } from "../types/types";
 import { isRobotInCell } from "../utils/is-robot-in-cell";
 
 export const useRobot = ({ robotPosition, cellCoordinates }: CellProps) => {

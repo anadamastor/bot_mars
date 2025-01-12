@@ -1,26 +1,42 @@
+import {
+  isMoveForwardInstruction,
+  isRotateInstruction,
+} from "../../types/type-guards";
+
 type InstructionsInputProps = {
   instructions: string;
   setInstructions: (instructions: string) => void;
-  disabled: boolean;
+  isDisabled: boolean;
 };
 
 export const InstructionsInput = ({
   instructions,
   setInstructions,
-  disabled,
+  isDisabled,
 }: InstructionsInputProps) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const allInstructions = e.currentTarget.value.toUpperCase();
+    const lastInstruction = allInstructions.slice(-1);
+    if (
+      isRotateInstruction(lastInstruction) ||
+      isMoveForwardInstruction(lastInstruction)
+    ) {
+      setInstructions(allInstructions);
+    } else {
+      console.log("Character not allowed");
+    }
+  };
+
   return (
     <input
-      type="area"
+      type="text"
       className={
         "min-w-96 px-3 border border-slate-800 border-opacity-80 font-thin"
       }
       value={instructions}
-      onChange={(e) => {
-        setInstructions(e.target.value);
-      }}
-      placeholder="Instructions (R-L-F only)"
-      disabled={disabled}
+      onChange={(e) => handleInputChange(e)}
+      placeholder="Instructions (only R, L, or F allowed)"
+      disabled={isDisabled}
     />
   );
 };

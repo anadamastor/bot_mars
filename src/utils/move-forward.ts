@@ -1,28 +1,29 @@
-import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../constants/constants";
+import { gridBoundary } from "../constants/constants";
 import { Position } from "../types/types";
+import { normaliseAngle } from "./normalise-angle";
 
 export const moveForward = (position: Position): Position => {
   const { robotX, robotY, robotAngle } = position;
+  const normalisedRobotAngle = normaliseAngle(robotAngle);
 
-  const normalisedRobotAngle = (robotAngle + 360) % 360;
   // MOVE UP
   if (normalisedRobotAngle === 0) {
-    if (robotY + 1 === NUMBER_OF_ROWS - 1) {
-      console.log("JUST HIT TOP BORDER");
-    }
-    return { ...position, robotY: Math.min(robotY + 1, NUMBER_OF_ROWS - 1) };
+    return { ...position, robotY: Math.min(robotY + 1, gridBoundary.y) };
   }
+
   //MOVE RIGHT
   if (normalisedRobotAngle === 90) {
     return {
       ...position,
-      robotX: Math.min(robotX + 1, NUMBER_OF_COLUMNS - 1),
+      robotX: Math.min(robotX + 1, gridBoundary.x),
     };
   }
+
   // MOVE DOWN
   if (normalisedRobotAngle === 180) {
     return { ...position, robotY: Math.max(robotY - 1, 0) };
   }
+
   // MOVE LEFT
   if (normalisedRobotAngle === 270) {
     return {

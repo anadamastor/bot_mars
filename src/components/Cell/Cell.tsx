@@ -1,14 +1,13 @@
 import { useRobot } from "../../hooks/useRobot";
-import { CellProps } from "../../types/types";
-import { getCoordinates } from "../../utils/get-coordinates";
+import type { CellProps } from "../../types/types";
+import { formatCoordinates } from "../../utils/format-coordinates.ts";
 
 export const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
   const { isInCell, robotRotation, robotIcon } = useRobot({
     robotPosition,
     cellCoordinates,
   });
-  const cellCoordinatesText = getCoordinates(cellCoordinates);
-
+  const cellCoordinatesText = formatCoordinates(cellCoordinates);
   return (
     <div className="border border-stone-800 flex justify-center items-center text-4xl">
       {isInCell ? (

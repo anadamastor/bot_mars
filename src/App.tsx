@@ -4,7 +4,7 @@ import { INITIAL_POSITION, TRANSITION_SECONDS } from "./constants/constants";
 import { Position } from "./types/types";
 import { animationDuration } from "./utils/animation-duration";
 import { moveForward } from "./utils/move-forward";
-import { rotateRobot } from "./utils/rotate";
+import { rotate } from "./utils/rotate";
 import Grid from "./components/Grid/Grid";
 import {
   isMoveForwardInstruction,
@@ -29,8 +29,8 @@ function App() {
         if (isRotateInstruction(instruction)) {
           setRobotPosition((prevPosition) => ({
             ...prevPosition,
-            robotAngle: rotateRobot({
-              angle: prevPosition.robotAngle,
+            robotAngle: rotate({
+              initialAngle: prevPosition.robotAngle,
               directionOfRotation: instruction,
             }),
           }));
@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className={"flex flex-col font-roboto px-8"}>
-      <h1 className="text-center mt-9 text-4xl font-bold ">
+      <h1 className="text-center mt-9 text-4xl font-bold">
         A little stroll on Mars
       </h1>
       <Grid robotPosition={robotPosition} />

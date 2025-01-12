@@ -1,3 +1,2 @@
-export const createArray = (length: number) => {
-  return Array.from({ length }, (_, i) => i);
-};
+export const createArray = (length: number): number[] =>
+  Array.from({ length }, (_, i) => i);

@@ -1,7 +1,15 @@
 import { INITIAL_POSITION } from "../../constants/constants";
-import { CommandLineProps } from "../../types/types";
+import type { Position } from "../../types/types";
 import { Button } from "./Button";
 import { InstructionsInput } from "./Input";
+
+export type CommandLineProps = {
+  instructions: string;
+  setInstructions: (instructions: string) => void;
+  executeInstructions: (instructions: string) => void;
+  setRobotPosition: (position: Position) => void;
+  isAnimating: boolean;
+};
 
 export const CommandLine = ({
   instructions,
@@ -13,7 +21,7 @@ export const CommandLine = ({
   return (
     <div className={"flex flex-nowrap justify-center"}>
       <InstructionsInput
-        disabled={isAnimating}
+        isDisabled={isAnimating}
         instructions={instructions}
         setInstructions={setInstructions}
       />

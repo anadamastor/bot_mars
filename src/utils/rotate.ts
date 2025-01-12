@@ -1,24 +1,19 @@
-import {
-  AVAILABLE_INSTRUCTION,
-  type AvailableInstructions,
-} from "../constants/constants";
+import { Instructions } from "../constants/constants";
 
 type RotateRobotProps = {
-  angle: number;
-  directionOfRotation:
-    | AvailableInstructions["rotateLeft"]
-    | AvailableInstructions["rotateRight"];
+  initialAngle: number;
+  directionOfRotation: Instructions.RotateLeft | Instructions.RotateRight;
 };
 
-export const rotateRobot = ({
-  angle,
+export const rotate = ({
+  initialAngle,
   directionOfRotation,
 }: RotateRobotProps): number => {
-  if (directionOfRotation === AVAILABLE_INSTRUCTION.rotateLeft) {
-    return angle - 90;
+  if (directionOfRotation === Instructions.RotateLeft) {
+    return initialAngle - 90;
   }
-  if (directionOfRotation === AVAILABLE_INSTRUCTION.rotateRight) {
-    return angle + 90;
+  if (directionOfRotation === Instructions.RotateRight) {
+    return initialAngle + 90;
   }
-  return angle;
+  return initialAngle;
 };
