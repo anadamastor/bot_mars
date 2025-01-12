@@ -1,3 +1,8 @@
+npm install
+npm run dev
+npm run test
+
+
 Robot on Mars!
 
 - Displays a grid that has flexible sizing, dimensions editable in /constants.
