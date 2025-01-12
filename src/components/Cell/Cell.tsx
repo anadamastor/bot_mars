@@ -3,7 +3,7 @@ import type { CellProps } from "../../types/types";
 import { formatCoordinates } from "../../utils/format-coordinates.ts";
 
 export const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
-  const { isInCell, robotRotation, robotIcon } = useRobot({
+  const { isInCell, robotRotationStyle, robotIcon } = useRobot({
     robotPosition,
     cellCoordinates,
   });
@@ -12,7 +12,7 @@ export const Cell = ({ robotPosition, cellCoordinates }: CellProps) => {
     <div className="border border-stone-800 flex justify-center items-center text-4xl">
       {isInCell ? (
         <div
-          style={robotRotation}
+          style={robotRotationStyle}
           aria-label={`Robot is here! Cell: ${cellCoordinatesText} with ${robotPosition.robotAngle} deg rotation`}
         >
           {robotIcon}

@@ -16,6 +16,11 @@ export const InstructionsInput = ({
 }: InstructionsInputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const allInstructions = e.currentTarget.value.toUpperCase();
+    if (allInstructions === "") {
+      setInstructions("");
+      return;
+    }
+
     const lastInstruction = allInstructions.slice(-1);
     if (
       isRotateInstruction(lastInstruction) ||
