@@ -1,7 +1,7 @@
 # Robot on Mars
 https://bot-mars.vercel.app/
 
-This project simulates a robot moving on a grid, taking commands for movement and rotation. It allows the user to input commands and see the robot animate its movement on the grid, respecting boundaries and grid size.
+This project simulates a robot moving on a grid, taking commands for movement and rotation. It allows to input commands and see the robot animate on the grid, respecting boundaries and grid size.
 
 ## Prerequisites
 
