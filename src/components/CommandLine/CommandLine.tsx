@@ -1,7 +1,7 @@
 import { INITIAL_POSITION } from "../../constants/constants";
 import type { Position } from "../../types/types";
 import { Button } from "./Button";
-import { InstructionsInput } from "./Input";
+import { InstructionsInput } from "./InstructionsInput";
 
 export type CommandLineProps = {
   instructions: string;
