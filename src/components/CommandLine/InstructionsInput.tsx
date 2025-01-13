@@ -24,7 +24,7 @@ export const InstructionsInput = ({
     <input
       type="text"
       className={
-        "min-w-96 px-3 border border-slate-800 border-opacity-80 font-thin"
+        "px-3 border border-slate-800 border-opacity-80 font-thin w-56 text-sm"
       }
       value={instructions}
       onChange={(e) => handleInputChange(e)}

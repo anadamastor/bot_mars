@@ -19,7 +19,7 @@ export const CommandLine = ({
   isAnimating,
 }: CommandLineProps) => {
   return (
-    <div className={"flex flex-nowrap justify-center"}>
+    <div className={"flex"}>
       <InstructionsInput
         isDisabled={isAnimating}
         instructions={instructions}

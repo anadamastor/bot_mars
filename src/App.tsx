@@ -41,8 +41,10 @@ function App() {
   };
 
   return (
-    <div className={"flex flex-col font-roboto px-8"}>
-      <h1 className="text-center mt-9 text-4xl font-bold">
+    <div
+      className={"font-roboto px-8  flex flex-col justify-center items-center mt-20"}
+    >
+      <h1 className="text-center text-4xl font-bold">
         A little stroll on Mars
       </h1>
       <Grid robotPosition={robotPosition} />
