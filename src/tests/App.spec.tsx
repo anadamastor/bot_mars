@@ -128,4 +128,33 @@ describe("App", async () => {
       { timeout: getTimeout(instructions) }
     );
   }, 10000);
+
+  it("should move the Robot to the right location after 15 negative rotations", async () => {
+    render(<App />);
+    const instructions = "FRFFLLLLLLLLLLLLLLLLF";
+    await userEvent.type(instructionsTextBox(), instructions);
+    await userEvent.click(moveButton());
+    await waitFor(
+      () => {
+        expect(
+          robotSelector({ cellX: 3, cellY: 1, angle: -1350 })
+        ).toBeVisible();
+      },
+      { timeout: getTimeout(instructions) }
+    );
+  }, 10000);
+  it("should move the Robot to the right location after 15 positive rotations", async () => {
+    render(<App />);
+    const instructions = "FRFFLRRRRRRRRRRRRRRRF";
+    await userEvent.type(instructionsTextBox(), instructions);
+    await userEvent.click(moveButton());
+    await waitFor(
+      () => {
+        expect(
+          robotSelector({ cellX: 1, cellY: 1, angle: 1350 })
+        ).toBeVisible();
+      },
+      { timeout: getTimeout(instructions) }
+    );
+  }, 10000);
 });
