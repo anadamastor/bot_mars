@@ -26,8 +26,8 @@ describe("App", async () => {
 
   it("should load correctly", () => {
     render(<App />);
-    expect(screen.getByText(/A little stroll on Mars/i)).toBeVisible;
-    expect(moveButton()).toBeVisible;
+    expect(screen.getByText(/A little stroll on Mars/i)).toBeVisible();
+    expect(moveButton()).toBeVisible();
   });
 
   it("should ignore not permitted instructions", async () => {
