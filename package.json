@@ -9,16 +9,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "preview": "vite preview",
-    "test": "vitest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "vitest"
-    }
+    "test": "vitest",
+    "test:cli": "vitest run",
+    "prepare": "husky install"
   },
   "dependencies": {
     "husky": "^9.1.7",
-    "pre-commit": "^1.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -42,6 +38,7 @@
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "husky": "^8.0.0"
   }
 }
