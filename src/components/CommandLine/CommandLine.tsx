@@ -5,7 +5,6 @@ import {
   INITIAL_POSITION_3,
   TRANSITION_SECONDS,
 } from "../../constants/constants";
-import type { Robot } from "../../types/types";
 import { Button } from "./Button";
 import { InstructionsInput } from "./InstructionsInput";
 import {
@@ -15,22 +14,20 @@ import {
 import { animationDuration } from "../../utils/animation-duration";
 import { moveForward } from "../../utils/move-forward";
 import { rotate } from "../../utils/rotate";
+import { useRobots } from "../../context/RobotsContext";
 
-export type CommandLineProps = {
-  setRobotPosition: React.Dispatch<React.SetStateAction<Robot[]>>;
-  robotPosition: Robot[];
-};
-
-export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
+export const CommandLine = () => {
   const [instructions, setInstructions] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
+  const context = useRobots();
+  const { setRobots } = context;
 
   const executeInstructions = async (instructions: string) => {
     setIsAnimating(true);
     for (const instruction of instructions) {
       await animationDuration(TRANSITION_SECONDS).then(() => {
         if (isMoveForwardInstruction(instruction)) {
-          setRobotPosition((prevPosition) => {
+          setRobots((prevPosition) => {
             const newPositions = prevPosition.map((pos) => moveForward(pos));
 
             return newPositions;
@@ -38,7 +35,7 @@ export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
         }
 
         if (isRotateInstruction(instruction)) {
-          setRobotPosition((prevPosition) => {
+          setRobots((prevPosition) => {
             const newPositions = prevPosition.map((pos) => {
               return {
                 ...pos,
@@ -71,11 +68,7 @@ export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
       </Button>
       <Button
         onClick={() =>
-          setRobotPosition([
-            INITIAL_POSITION,
-            INITIAL_POSITION_2,
-            INITIAL_POSITION_3,
-          ])
+          setRobots([INITIAL_POSITION, INITIAL_POSITION_2, INITIAL_POSITION_3])
         }
         disabled={isAnimating}
       >

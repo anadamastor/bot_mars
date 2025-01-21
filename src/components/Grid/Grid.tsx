@@ -3,14 +3,17 @@ import type { Robot } from "../../types/types";
 import { createArray } from "../../utils/create-array";
 import { getCoordinates } from "../../utils/get-coordinates";
 import { Cell } from "../Cell/Cell";
+import { useRobots } from "../../context/RobotsContext";
 
 export type GridProps = {
   robots: Robot[];
 };
 
-const Grid = ({ robots }: GridProps) => {
+const Grid = () => {
   const rowIndices = createArray(NUMBER_OF_ROWS);
   const columnIndices = createArray(NUMBER_OF_COLUMNS);
+  const context = useRobots();
+  const { robots } = context;
 
   return (
     <div
