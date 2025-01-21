@@ -5,7 +5,7 @@ import {
   INITIAL_POSITION_3,
   TRANSITION_SECONDS,
 } from "../../constants/constants";
-import type { Position } from "../../types/types";
+import type { Robot } from "../../types/types";
 import { Button } from "./Button";
 import { InstructionsInput } from "./InstructionsInput";
 import {
@@ -17,14 +17,11 @@ import { moveForward } from "../../utils/move-forward";
 import { rotate } from "../../utils/rotate";
 
 export type CommandLineProps = {
-  setRobotPosition: React.Dispatch<React.SetStateAction<Position[]>>;
-  robotPosition: Position[];
+  setRobotPosition: React.Dispatch<React.SetStateAction<Robot[]>>;
+  robotPosition: Robot[];
 };
 
-export const CommandLine = ({
-  setRobotPosition,
-  robotPosition,
-}: CommandLineProps) => {
+export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
   const [instructions, setInstructions] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
 

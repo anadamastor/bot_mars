@@ -6,10 +6,10 @@ import {
   INITIAL_POSITION_2,
   INITIAL_POSITION_3,
 } from "./constants/constants";
-import type { Position } from "./types/types";
+import type { Robot } from "./types/types";
 
 function App() {
-  const [robotPosition, setRobotPosition] = useState<Position[]>([
+  const [robots, setRobots] = useState<Robot[]>([
     INITIAL_POSITION,
     INITIAL_POSITION_2,
     INITIAL_POSITION_3,
@@ -24,11 +24,8 @@ function App() {
       <h1 className="text-center text-4xl font-bold">
         A little stroll on Mars
       </h1>
-      <Grid robotPosition={robotPosition} />
-      <CommandLine
-        setRobotPosition={setRobotPosition}
-        robotPosition={robotPosition}
-      />
+      <Grid robots={robots} />
+      <CommandLine setRobotPosition={setRobots} robotPosition={robots} />
     </div>
   );
 }

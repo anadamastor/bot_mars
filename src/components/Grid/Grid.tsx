@@ -1,14 +1,14 @@
 import { NUMBER_OF_COLUMNS, NUMBER_OF_ROWS } from "../../constants/constants";
-import type { Position } from "../../types/types";
+import type { Robot } from "../../types/types";
 import { createArray } from "../../utils/create-array";
 import { getCoordinates } from "../../utils/get-coordinates";
 import { Cell } from "../Cell/Cell";
 
 export type GridProps = {
-  robotPosition: Position[];
+  robots: Robot[];
 };
 
-const Grid = ({ robotPosition }: GridProps) => {
+const Grid = ({ robots }: GridProps) => {
   const rowIndices = createArray(NUMBER_OF_ROWS);
   const columnIndices = createArray(NUMBER_OF_COLUMNS);
 
@@ -28,15 +28,20 @@ const Grid = ({ robotPosition }: GridProps) => {
             columnIndex,
           });
 
-          return robotPosition.map((robotPosition) => {
+          const robot = robots.find((robot) => {
             return (
-              <Cell
-                key={`${cellCoordinates.cellX}-${cellCoordinates.cellY}`}
-                robotPosition={robotPosition}
-                cellCoordinates={cellCoordinates}
-              />
+              robot.robotX === cellCoordinates.cellX &&
+              robot.robotY === cellCoordinates.cellY
             );
           });
+
+          return (
+            <Cell
+              key={`${cellCoordinates.cellX}-${cellCoordinates.cellY}`}
+              robot={robot}
+              cellCoordinates={cellCoordinates}
+            />
+          );
         });
       })}
     </div>
