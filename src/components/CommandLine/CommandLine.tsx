@@ -18,7 +18,6 @@ import { rotate } from "../../utils/rotate";
 
 export type CommandLineProps = {
   setRobotPosition: React.Dispatch<React.SetStateAction<Robot[]>>;
-  robotPosition: Robot[];
 };
 
 export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {

@@ -25,7 +25,7 @@ function App() {
         A little stroll on Mars
       </h1>
       <Grid robots={robots} />
-      <CommandLine setRobotPosition={setRobots} robotPosition={robots} />
+      <CommandLine setRobotPosition={setRobots} />
     </div>
   );
 }
