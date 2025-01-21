@@ -1,4 +1,4 @@
-export type Position = {
+export type Robot = {
   robotX: number;
   robotY: number;
   robotAngle: number;
@@ -10,6 +10,6 @@ export type CellCoordinates = {
 };
 
 export type CellProps = {
-  robotPosition: Position;
+  robot: Robot | undefined;
   cellCoordinates: CellCoordinates;
 };

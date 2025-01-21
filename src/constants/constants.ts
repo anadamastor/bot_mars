@@ -9,6 +9,16 @@ export const INITIAL_POSITION: Position = {
   robotY: 0,
   robotAngle: 0,
 };
+export const INITIAL_POSITION_2: Position = {
+  robotX: 3,
+  robotY: 3,
+  robotAngle: 0,
+};
+export const INITIAL_POSITION_3: Position = {
+  robotX: 4,
+  robotY: 1,
+  robotAngle: 0,
+};
 
 export const gridBoundary = {
   x: NUMBER_OF_ROWS - 1,

@@ -1,10 +1,13 @@
-import { CellProps } from "../types/types";
+import type { CellCoordinates, Robot } from "../types/types";
 
 export const isRobotInCell = ({
-  robotPosition,
+  robot,
   cellCoordinates,
-}: CellProps): boolean => {
-  const { robotX, robotY } = robotPosition;
+}: {
+  robot: Robot;
+  cellCoordinates: CellCoordinates;
+}): boolean => {
+  const { robotX, robotY } = robot;
   const { cellX, cellY } = cellCoordinates;
   return robotX === cellX && robotY === cellY;
 };
