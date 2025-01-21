@@ -1,7 +1,7 @@
 import { TRANSITION_SECONDS } from "../constants/constants";
-import type { Position } from "../types/types";
+import type { Robot } from "../types/types";
 
-export const getRobotRotationStyle = (robot: Position) => {
+export const getRobotRotationStyle = (robot: Robot) => {
   return {
     transform: `rotate(${robot.robotAngle}deg)`,
     transition: `${TRANSITION_SECONDS}s`,

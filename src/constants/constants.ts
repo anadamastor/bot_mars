@@ -1,20 +1,20 @@
-import { Position } from "../types/types";
+import { Robot } from "../types/types";
 
 export const NUMBER_OF_ROWS = 5;
 export const NUMBER_OF_COLUMNS = 5;
 export const TRANSITION_SECONDS = 0.3;
 export const ROBOT_ICON = "🤖";
-export const INITIAL_POSITION: Position = {
+export const INITIAL_POSITION: Robot = {
   robotX: 0,
   robotY: 0,
   robotAngle: 0,
 };
-export const INITIAL_POSITION_2: Position = {
+export const INITIAL_POSITION_2: Robot = {
   robotX: 3,
   robotY: 3,
   robotAngle: 0,
 };
-export const INITIAL_POSITION_3: Position = {
+export const INITIAL_POSITION_3: Robot = {
   robotX: 4,
   robotY: 1,
   robotAngle: 0,
