@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { CommandLine } from "./components/CommandLine/CommandLine";
 import Grid from "./components/Grid/Grid";
-import { INITIAL_POSITION } from "./constants/constants";
+import {
+  INITIAL_POSITION,
+  INITIAL_POSITION_2,
+  INITIAL_POSITION_3,
+} from "./constants/constants";
 import type { Position } from "./types/types";
 
 function App() {
-  const [robotPosition, setRobotPosition] =
-    useState<Position>(INITIAL_POSITION);
+  const [robotPosition, setRobotPosition] = useState<Position[]>([
+    INITIAL_POSITION,
+    INITIAL_POSITION_2,
+    INITIAL_POSITION_3,
+  ]);
 
   return (
     <div
@@ -18,7 +25,10 @@ function App() {
         A little stroll on Mars
       </h1>
       <Grid robotPosition={robotPosition} />
-      <CommandLine setRobotPosition={setRobotPosition} />
+      <CommandLine
+        setRobotPosition={setRobotPosition}
+        robotPosition={robotPosition}
+      />
     </div>
   );
 }

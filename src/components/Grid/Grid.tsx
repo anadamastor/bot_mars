@@ -5,7 +5,7 @@ import { getCoordinates } from "../../utils/get-coordinates";
 import { Cell } from "../Cell/Cell";
 
 export type GridProps = {
-  robotPosition: Position;
+  robotPosition: Position[];
 };
 
 const Grid = ({ robotPosition }: GridProps) => {
@@ -28,13 +28,15 @@ const Grid = ({ robotPosition }: GridProps) => {
             columnIndex,
           });
 
-          return (
-            <Cell
-              key={`${cellCoordinates.cellX}-${cellCoordinates.cellY}`}
-              robotPosition={robotPosition}
-              cellCoordinates={cellCoordinates}
-            />
-          );
+          return robotPosition.map((robotPosition) => {
+            return (
+              <Cell
+                key={`${cellCoordinates.cellX}-${cellCoordinates.cellY}`}
+                robotPosition={robotPosition}
+                cellCoordinates={cellCoordinates}
+              />
+            );
+          });
         });
       })}
     </div>

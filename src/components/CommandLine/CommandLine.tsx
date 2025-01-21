@@ -1,6 +1,8 @@
 import { useState } from "react";
 import {
   INITIAL_POSITION,
+  INITIAL_POSITION_2,
+  INITIAL_POSITION_3,
   TRANSITION_SECONDS,
 } from "../../constants/constants";
 import type { Position } from "../../types/types";
@@ -15,10 +17,14 @@ import { moveForward } from "../../utils/move-forward";
 import { rotate } from "../../utils/rotate";
 
 export type CommandLineProps = {
-  setRobotPosition: React.Dispatch<React.SetStateAction<Position>>;
+  setRobotPosition: React.Dispatch<React.SetStateAction<Position[]>>;
+  robotPosition: Position[];
 };
 
-export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
+export const CommandLine = ({
+  setRobotPosition,
+  robotPosition,
+}: CommandLineProps) => {
   const [instructions, setInstructions] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -27,22 +33,32 @@ export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
     for (const instruction of instructions) {
       await animationDuration(TRANSITION_SECONDS).then(() => {
         if (isMoveForwardInstruction(instruction)) {
-          setRobotPosition((prevPosition) => moveForward(prevPosition));
+          setRobotPosition((prevPosition) => {
+            const newPositions = prevPosition.map((pos) => moveForward(pos));
+
+            return newPositions;
+          });
         }
 
         if (isRotateInstruction(instruction)) {
-          setRobotPosition((prevPosition) => ({
-            ...prevPosition,
-            robotAngle: rotate({
-              initialAngle: prevPosition.robotAngle,
-              directionOfRotation: instruction,
-            }),
-          }));
+          setRobotPosition((prevPosition) => {
+            const newPositions = prevPosition.map((pos) => {
+              return {
+                ...pos,
+                robotAngle: rotate({
+                  initialAngle: pos.robotAngle,
+                  directionOfRotation: instruction,
+                }),
+              };
+            });
+            return newPositions;
+          });
         }
       });
     }
     setIsAnimating(false);
   };
+
   return (
     <div className={"flex"}>
       <InstructionsInput
@@ -57,7 +73,13 @@ export const CommandLine = ({ setRobotPosition }: CommandLineProps) => {
         Move
       </Button>
       <Button
-        onClick={() => setRobotPosition(INITIAL_POSITION)}
+        onClick={() =>
+          setRobotPosition([
+            INITIAL_POSITION,
+            INITIAL_POSITION_2,
+            INITIAL_POSITION_3,
+          ])
+        }
         disabled={isAnimating}
       >
         Reset
